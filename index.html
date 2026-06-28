@@ -417,58 +417,194 @@
   background: #090909;
 }
 
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 22px;
+.awards {
+  background: #090909;
 }
 
-.award-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid var(--line);
-  border-radius: 22px;
+.awards-showcase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.award-main {
+  width: min(420px, 80vw);
+  aspect-ratio: 2 / 3;
+  border-radius: 26px;
   overflow: hidden;
+  border: 1px solid var(--line);
+  background: #111;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.award-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   transition: 0.25s ease;
 }
 
-.award-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(216, 168, 72, 0.55);
+.award-main:hover img {
+  transform: scale(1.03);
 }
 
-.award-card img {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  display: block;
-  background: #111;
-}
-
-.award-info {
-  padding: 16px;
-}
-
-.award-badge {
+.award-main-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 22px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
   color: var(--gold);
-  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 8px;
+  font-size: 12px;
 }
 
-.award-info h3 {
-  font-size: 16px;
-  line-height: 1.25;
-  margin-bottom: 5px;
+.gallery-arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.award-info p {
+.gallery-arrow:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+.award-counter {
+  text-align: center;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.4;
+  margin: 22px 0;
+  font-size: 15px;
 }
+
+.award-thumbnails {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 4px 18px;
+  scrollbar-width: thin;
+}
+
+.award-thumbnails img {
+  width: 72px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex: 0 0 auto;
+}
+
+.award-thumbnails img:hover,
+.award-thumbnails img.active-thumb {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: min(520px, 86vw);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 30px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.lightbox-arrow:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+.lightbox-left {
+  left: 28px;
+}
+
+.lightbox-right {
+  right: 28px;
+}
+
+@media (max-width: 700px) {
+  .awards-showcase {
+    gap: 12px;
+  }
+
+  .gallery-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .award-main {
+    width: min(330px, 72vw);
+  }
+
+  .lightbox-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+
+  .lightbox-left {
+    left: 12px;
+  }
+
+  .lightbox-right {
+    right: 12px;
+  }
     }
   </style>
 </head>
@@ -623,195 +759,60 @@
       <div class="section-kicker">Awards</div>
       <h2>Award-Winning Films</h2>
       <p>
-        Celebrating the filmmakers and films recognized in our previous edition.
+        Explore the posters of award-winning films from our previous edition.
       </p>
     </div>
 
-    <div class="awards-grid">
+    <div class="awards-showcase">
+      <button class="gallery-arrow left" onclick="changeAwardSlide(-1)">&#10094;</button>
 
-      <article class="award-card">
-        <img src="assets/awards/award-01.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Official Selection</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
+      <div class="award-main" onclick="openAwardLightbox()">
+        <img id="awardMainImage" src="assets/awards/award-01.jpg" alt="Award-winning film poster">
+        <div class="award-main-overlay">
+          <span>Click to view gallery</span>
         </div>
-      </article>
+      </div>
 
-      <article class="award-card">
-        <img src="assets/awards/award-02.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
+      <button class="gallery-arrow right" onclick="changeAwardSlide(1)">&#10095;</button>
+    </div>
 
-      <article class="award-card">
-        <img src="assets/awards/award-03.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
+    <div class="award-counter">
+      <span id="awardCounter">1 / 20</span>
+    </div>
 
-      <article class="award-card">
-        <img src="assets/awards/award-04.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-05.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-06.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-07.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-08.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-09.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-10.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-11.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-12.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-13.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-14.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-15.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-16.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-17.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-18.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-19.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
-      <article class="award-card">
-        <img src="assets/awards/award-20.jpg" alt="Award-winning film poster">
-        <div class="award-info">
-          <span class="award-badge">Award Winner</span>
-          <h3>Film Title</h3>
-          <p>Director Name</p>
-        </div>
-      </article>
-
+    <div class="award-thumbnails">
+      <img src="assets/awards/award-01.jpg" onclick="setAwardSlide(0)" class="active-thumb" alt="Award poster thumbnail">
+      <img src="assets/awards/award-02.jpg" onclick="setAwardSlide(1)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-03.jpg" onclick="setAwardSlide(2)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-04.jpg" onclick="setAwardSlide(3)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-05.jpg" onclick="setAwardSlide(4)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-06.jpg" onclick="setAwardSlide(5)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-07.jpg" onclick="setAwardSlide(6)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-08.jpg" onclick="setAwardSlide(7)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-09.jpg" onclick="setAwardSlide(8)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-10.jpg" onclick="setAwardSlide(9)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-11.jpg" onclick="setAwardSlide(10)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-12.jpg" onclick="setAwardSlide(11)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-13.jpg" onclick="setAwardSlide(12)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-14.jpg" onclick="setAwardSlide(13)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-15.jpg" onclick="setAwardSlide(14)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-16.jpg" onclick="setAwardSlide(15)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-17.jpg" onclick="setAwardSlide(16)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-18.jpg" onclick="setAwardSlide(17)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-19.jpg" onclick="setAwardSlide(18)" alt="Award poster thumbnail">
+      <img src="assets/awards/award-20.jpg" onclick="setAwardSlide(19)" alt="Award poster thumbnail">
     </div>
   </div>
 </section>
+
+<div id="awardLightbox" class="lightbox">
+  <button class="lightbox-close" onclick="closeAwardLightbox()">&times;</button>
+  <button class="lightbox-arrow lightbox-left" onclick="changeAwardSlide(-1)">&#10094;</button>
+
+  <img id="lightboxImage" src="assets/awards/award-01.jpg" alt="Award-winning film poster">
+
+  <button class="lightbox-arrow lightbox-right" onclick="changeAwardSlide(1)">&#10095;</button>
+</div>
 
     <section id="contact" class="contact">
       <div class="container">
