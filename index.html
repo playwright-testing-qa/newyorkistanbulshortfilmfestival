@@ -413,6 +413,62 @@
       section {
         padding: 72px 0;
       }
+      .awards {
+  background: #090909;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 22px;
+}
+
+.award-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.25s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 168, 72, 0.55);
+}
+
+.award-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: #111;
+}
+
+.award-info {
+  padding: 16px;
+}
+
+.award-badge {
+  color: var(--gold);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.award-info h3 {
+  font-size: 16px;
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+
+.award-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
     }
   </style>
 </head>
@@ -428,6 +484,7 @@
         <a href="#program">Festival</a>
         <a href="#submit">Submit</a>
         <a href="#previous">Previous Edition</a>
+        <a href="#awards">Awards</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -559,6 +616,202 @@
         </div>
       </div>
     </section>
+
+    <section id="awards" class="awards">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Awards</div>
+      <h2>Award-Winning Films</h2>
+      <p>
+        Celebrating the filmmakers and films recognized in our previous edition.
+      </p>
+    </div>
+
+    <div class="awards-grid">
+
+      <article class="award-card">
+        <img src="assets/awards/award-01.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Official Selection</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-02.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-03.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-04.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-05.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-06.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-07.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-08.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-09.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-10.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-11.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-12.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-13.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-14.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-15.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-16.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-17.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-18.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-19.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+      <article class="award-card">
+        <img src="assets/awards/award-20.jpg" alt="Award-winning film poster">
+        <div class="award-info">
+          <span class="award-badge">Award Winner</span>
+          <h3>Film Title</h3>
+          <p>Director Name</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
 
     <section id="contact" class="contact">
       <div class="container">
